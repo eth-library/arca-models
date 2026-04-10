@@ -1,9 +1,14 @@
+# Arca Models
+
 ![Project Status: Alpha](https://img.shields.io/badge/status-alpha-orange)
 ![Build](https://img.shields.io/github/actions/workflow/status/eth-library/data-archive-models/ci.yml?style=flat-square)
 ![Java](https://img.shields.io/badge/java-21-blue?style=flat-square)
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue?style=flat-square)
 
-# Data Archive Models
+**ETH Library Zurich · Data Archive · Domain Models**
+
+> [!TIP]
+> This repository is part of **Arca**, ETH Library's digital preservation pipeline. Visit the [umbrella repository](https://github.com/eth-library/arca) to understand the full system architecture and how to spin up the entire stack locally.
 
 A collection of JSON schemas defining data models for digital archiving systems based on the OAIS (Open Archival Information System) reference model. These schemas provide standardized definitions for various components of a data archive.
 
