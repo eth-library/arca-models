@@ -215,6 +215,10 @@ jobs:
         run: |
           # Enter the Nix development shell and run the build and publish commands
           nix develop --command bash -c '
+            # Install dependencies from lock file
+            echo "Syncing dependencies from lock file..."
+            uv sync --frozen
+
             # Build the package using Hatch (version determined by Git tags)
             echo "Building package..."
             uv build
