@@ -107,6 +107,9 @@ jobs:
     name: Publish to GitHub Packages
     runs-on: ubuntu-latest
     needs: generate-java-models # Ensures this job only starts after the Java models have been generated
+    concurrency:
+      group: publish-github-packages
+      cancel-in-progress: false
     # Only run this job when pushing to the main branch, creating a release, or manually triggered
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch' || github.event_name == 'release'
     permissions:
