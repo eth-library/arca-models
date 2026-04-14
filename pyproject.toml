@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "data-archive-models"
+name = "arca-models"
 dynamic = ["version"]
 description = "ETH Library Data Archive Models - Python Pydantic classes"
 readme = "README.md"
@@ -11,13 +11,13 @@ requires-python = ">=3.12"
 dependencies = ["pydantic>=2.12.5"]
 
 [project.urls]
-Repository = "https://github.com/eth-library/data-archive-models"
+Repository = "https://github.com/eth-library/arca-models"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/data_archive"]
+packages = ["src/arca_models"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src/data_archive"]
+include = ["src/arca_models"]
 
 [tool.hatch.version]
 source = "vcs"

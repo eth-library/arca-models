@@ -1,4 +1,4 @@
-package ch.ethz.library.darc.model;
+package ch.ethz.library.arca.model;
 
 import com.networknt.schema.Error;
 import com.networknt.schema.InputFormat;
@@ -25,10 +25,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class JsonSchemaValidationTest {
 
-    private static final String SCHEMAS_DIR = "schemas/data-archive";
+    private static final String SCHEMAS_DIR = "schemas/arca";
 
     /**
-     * Validates all JSON schema files in the schemas/data-archive directory against
+     * Validates all JSON schema files in the schemas/arca directory against
      * the official JSON Schema draft specification.
      */
     @Test
