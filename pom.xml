@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ch.ethz.library</groupId>
-    <artifactId>data-archive-models</artifactId>
+    <artifactId>arca-models</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -91,9 +91,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <sourceDirectory>${project.basedir}/schemas/data-archive</sourceDirectory>
+                    <sourceDirectory>${project.basedir}/schemas/arca</sourceDirectory>
                     <outputDirectory>${project.build.directory}/generated-sources/</outputDirectory>
-                    <targetPackage>ch.ethz.library.darc.model</targetPackage>
+                    <targetPackage>ch.ethz.library.arca.model</targetPackage>
                     <excludes>
                         <exclude>_shared/**</exclude>
                         <exclude>catalog.json</exclude>
@@ -125,7 +125,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/eth-library/data-archive-models</url>
+            <url>https://maven.pkg.github.com/eth-library/arca-models</url>
         </repository>
     </distributionManagement>
 </project>
