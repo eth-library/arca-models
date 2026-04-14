@@ -1,8 +1,8 @@
 """
-Script to generate a Mermaid class diagram from Pydantic models in the data_archive package.
+Script to generate a Mermaid class diagram from Pydantic models in the arca_models package.
 
 This script:
-1. Identifies all Pydantic model files in the data_archive package
+1. Identifies all Pydantic model files in the arca_models package
 2. Parses the files to extract class and field information
 3. Generates a Mermaid class diagram
 4. Outputs the diagram to a .mmd file
@@ -177,15 +177,15 @@ def main():
     """Main function to generate the Mermaid diagram."""
     # Find the src directory - adjusted for scripts subdirectory
     src_dir = Path(__file__).parent.parent / "src"
-    data_archive_dir = src_dir / "data_archive"
+    arca_models_dir = src_dir / "arca_models"
     
-    if not data_archive_dir.exists():
-        print(f"Error: Directory {data_archive_dir} does not exist.")
+    if not arca_models_dir.exists():
+        print(f"Error: Directory {arca_models_dir} does not exist.")
         return
     
     # Find all Python files that might contain Pydantic models
-    model_files = find_pydantic_model_files(data_archive_dir)
-    print(f"Found {len(model_files)} Python files in the data_archive package.")
+    model_files = find_pydantic_model_files(arca_models_dir)
+    print(f"Found {len(model_files)} Python files in the arca_models package.")
     
     # Parse all model files
     all_models = {}
@@ -193,13 +193,13 @@ def main():
         models = parse_pydantic_models(file_path)
         all_models.update(models)
     
-    print(f"Found {len(all_models)} Pydantic models in the data_archive package.")
+    print(f"Found {len(all_models)} Pydantic models in the arca_models package.")
     
     # Generate the Mermaid diagram
     mermaid_text = generate_mermaid_diagram(all_models)
     
     # Write the diagram to a file - adjusted for scripts subdirectory
-    output_file = Path(__file__).parent.parent / "data_archive_models.mmd"
+    output_file = Path(__file__).parent.parent / "arca_models.mmd"
     output_file.write_text(mermaid_text)
     
     print(f"Mermaid diagram generated and saved to {output_file}")

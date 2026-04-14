@@ -28,15 +28,15 @@ def main():
     """Main function to update the README.md file with a Mermaid class diagram."""
     # Find the src directory - adjusted for scripts subdirectory
     src_dir = Path(__file__).parent.parent / "src"
-    data_archive_dir = src_dir / "data_archive"
+    arca_models_dir = src_dir / "arca_models"
     
-    if not data_archive_dir.exists():
-        print(f"Error: Directory {data_archive_dir} does not exist.")
+    if not arca_models_dir.exists():
+        print(f"Error: Directory {arca_models_dir} does not exist.")
         return
     
     # Find all Python files that might contain Pydantic models
-    model_files = generate_mermaid_diagram.find_pydantic_model_files(data_archive_dir)
-    print(f"Found {len(model_files)} Python files in the data_archive package.")
+    model_files = generate_mermaid_diagram.find_pydantic_model_files(arca_models_dir)
+    print(f"Found {len(model_files)} Python files in the arca_models package.")
     
     # Parse all model files
     all_models = {}
@@ -44,7 +44,7 @@ def main():
         models = generate_mermaid_diagram.parse_pydantic_models(file_path)
         all_models.update(models)
     
-    print(f"Found {len(all_models)} Pydantic models in the data_archive package.")
+    print(f"Found {len(all_models)} Pydantic models in the arca_models package.")
     
     # Generate the Mermaid diagram
     mermaid_text = generate_mermaid_diagram.generate_mermaid_diagram(all_models)
