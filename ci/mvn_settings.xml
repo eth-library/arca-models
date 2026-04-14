@@ -15,7 +15,7 @@
                 <repositories>
                     <repository>
                         <id>github</id>
-                        <url>https://maven.pkg.github.com/eth-library/data-archive-models</url>
+                        <url>https://maven.pkg.github.com/eth-library/arca-models</url>
                         <snapshots>
                             <enabled>true</enabled>
                         </snapshots>
