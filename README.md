@@ -1,7 +1,7 @@
 # Arca Models
 
 ![Project Status: Alpha](https://img.shields.io/badge/status-alpha-orange)
-![Build](https://img.shields.io/github/actions/workflow/status/eth-library/data-archive-models/ci.yml?style=flat-square)
+![Build](https://img.shields.io/github/actions/workflow/status/eth-library/arca-models/ci.yml?style=flat-square)
 ![Java](https://img.shields.io/badge/java-21-blue?style=flat-square)
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue?style=flat-square)
 
@@ -81,14 +81,14 @@ Python models are automatically generated from JSON schemas:
 # Generate Python models from JSON schemas
 datamodel-codegen \
   --input-file-type jsonschema \
-  --input schemas/data-archive/ \
-  --output src/data_archive/ \
+  --input schemas/arca/ \
+  --output src/arca_models/ \
   --output-model-type pydantic_v2.BaseModel \
   --field-constraints \
   --use-schema-description
 ```
 
-The generated models use Pydantic v2 and are stored in the `src/data_archive/` directory.
+The generated models use Pydantic v2 and are stored in the `src/arca_models/` directory.
 
 ### JSON Schema Best Practices Review
 
@@ -107,9 +107,9 @@ Java classes are automatically generated from JSON schemas using the jsonschema2
     <artifactId>jsonschema2pojo-maven-plugin</artifactId>
     <version>1.2.1</version>
     <configuration>
-        <sourceDirectory>${project.basedir}/schemas/data-archive</sourceDirectory>
+        <sourceDirectory>${project.basedir}/schemas/arca</sourceDirectory>
         <outputDirectory>${project.build.directory}/generated-sources/</outputDirectory>
-        <targetPackage>ch.ethz.library.darc.model</targetPackage>
+        <targetPackage>ch.ethz.library.arca.model</targetPackage>
         <excludes>
             <exclude>_shared/**</exclude>
             <exclude>catalog.json</exclude>
@@ -118,7 +118,7 @@ Java classes are automatically generated from JSON schemas using the jsonschema2
 </plugin>
 ```
 
-The plugin is executed during the Maven `prepare-package` phase and generates Java classes from the JSON schemas in the `schemas/data-archive/` directory. The generated classes are stored in the `target/generated-sources/` directory under the package `ch.ethz.library.darc.model`.
+The plugin is executed during the Maven `prepare-package` phase and generates Java classes from the JSON schemas in the `schemas/arca/` directory. The generated classes are stored in the `target/generated-sources/` directory under the package `ch.ethz.library.arca.model`.
 
 To generate the Java classes, you can use one of the Maven commands listed in the [Java Build Options](#java-build-options) section.
 
@@ -163,7 +163,7 @@ The project provides several Maven build commands:
 Validate that all JSON schemas are syntactically correct and comply with JSON Schema Draft 2020-12:
 
 ```bash
-check-jsonschema --check-metaschema schemas/data-archive/*.json
+check-jsonschema --check-metaschema schemas/arca/*.json
 ```
 
 This command validates:
@@ -177,10 +177,10 @@ After generating Python models, validate them for type correctness:
 
 ```bash
 # Type-check with mypy
-mypy src/data_archive/ --ignore-missing-imports
+mypy src/arca_models/ --ignore-missing-imports
 
 # Lint with ruff (faster alternative)
-ruff check src/data_archive/
+ruff check src/arca_models/
 ```
 
 This validates:
@@ -293,7 +293,7 @@ classDiagram
 
 The class diagram is generated using Python scripts located in the `scripts` directory:
 
-- `scripts/generate_mermaid_diagram.py`: Generates a Mermaid class diagram from Pydantic models in the data_archive package
+- `scripts/generate_mermaid_diagram.py`: Generates a Mermaid class diagram from Pydantic models in the arca_models package
 - `scripts/update_readme.py`: Updates this README.md file with the generated diagram
 
 To update the diagram:
@@ -303,7 +303,7 @@ python scripts/update_readme.py
 ```
 
 This will:
-1. Scan the Pydantic models in the `src/data_archive` directory
+1. Scan the Pydantic models in the `src/arca_models` directory
 2. Generate a Mermaid class diagram
 3. Update the diagram in this README.md file between the marker comments
 
