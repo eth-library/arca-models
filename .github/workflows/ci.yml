@@ -1,4 +1,4 @@
-name: Data Archive Models CI
+name: Arca Models CI
 
 # Triggers the workflow on pushes to the 'main' branch, pull requests targeting 'main',
 # release creation, and also allows manual triggering via the GitHub Actions UI.
@@ -183,7 +183,7 @@ jobs:
           # Enter the Nix development shell and run the code generation commands
           nix develop --command bash -c '
             # Ensure the output directory exists
-            mkdir -p src/data_archive/
+            mkdir -p src/arca_models/
 
             # Generate Python models from JSON schemas
             echo "Generating Python models from JSON schemas..."
@@ -200,8 +200,8 @@ jobs:
             # --target-python-version: Target Python 3.12 for optimal compatibility
             datamodel-codegen \
               --input-file-type jsonschema \
-              --input schemas/data-archive/ \
-              --output src/data_archive/ \
+              --input schemas/arca/ \
+              --output src/arca_models/ \
               --output-model-type pydantic_v2.BaseModel \
               --field-constraints \
               --use-schema-description \
@@ -211,7 +211,7 @@ jobs:
 
             # List generated files for verification
             echo "Generated Python models:"
-            ls -la src/data_archive/
+            ls -la src/arca_models/
           '
 
       - name: Build and Publish to TestPyPI
